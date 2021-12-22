@@ -1,6 +1,546 @@
 {
   "version": 1,
   "projects": {
+    "booking-domain": {
+      "projectType": "library",
+      "root": "libs/booking/domain",
+      "sourceRoot": "libs/booking/domain/src",
+      "prefix": "booking",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking/domain"],
+          "options": {
+            "jestConfig": "libs/booking/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking/domain/src/**/*.ts",
+              "libs/booking/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking", "type:domain-logic"]
+    },
+    "booking10-domain": {
+      "projectType": "library",
+      "root": "libs/booking10/domain",
+      "sourceRoot": "libs/booking10/domain/src",
+      "prefix": "booking10",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking10/domain"],
+          "options": {
+            "project": "libs/booking10/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking10/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking10/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking10/domain"],
+          "options": {
+            "jestConfig": "libs/booking10/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking10/domain/src/**/*.ts",
+              "libs/booking10/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking10", "type:domain-logic"]
+    },
+    "booking11-domain": {
+      "projectType": "library",
+      "root": "libs/booking11/domain",
+      "sourceRoot": "libs/booking11/domain/src",
+      "prefix": "booking11",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking11/domain"],
+          "options": {
+            "project": "libs/booking11/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking11/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking11/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking11/domain"],
+          "options": {
+            "jestConfig": "libs/booking11/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking11/domain/src/**/*.ts",
+              "libs/booking11/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking11", "type:domain-logic"]
+    },
+    "booking12-domain": {
+      "projectType": "library",
+      "root": "libs/booking12/domain",
+      "sourceRoot": "libs/booking12/domain/src",
+      "prefix": "booking12",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking12/domain"],
+          "options": {
+            "project": "libs/booking12/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking12/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking12/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking12/domain"],
+          "options": {
+            "jestConfig": "libs/booking12/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking12/domain/src/**/*.ts",
+              "libs/booking12/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking12", "type:domain-logic"]
+    },
+    "booking13-domain": {
+      "projectType": "library",
+      "root": "libs/booking13/domain",
+      "sourceRoot": "libs/booking13/domain/src",
+      "prefix": "booking13",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking13/domain"],
+          "options": {
+            "project": "libs/booking13/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking13/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking13/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking13/domain"],
+          "options": {
+            "jestConfig": "libs/booking13/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking13/domain/src/**/*.ts",
+              "libs/booking13/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking13", "type:domain-logic"]
+    },
+    "booking2-domain": {
+      "projectType": "library",
+      "root": "libs/booking2/domain",
+      "sourceRoot": "libs/booking2/domain/src",
+      "prefix": "booking2",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking2/domain"],
+          "options": {
+            "jestConfig": "libs/booking2/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking2/domain/src/**/*.ts",
+              "libs/booking2/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking2", "type:domain-logic"]
+    },
+    "booking4-domain": {
+      "projectType": "library",
+      "root": "libs/booking4/domain",
+      "sourceRoot": "libs/booking4/domain/src",
+      "prefix": "booking4",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking4/domain"],
+          "options": {
+            "jestConfig": "libs/booking4/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking4/domain/src/**/*.ts",
+              "libs/booking4/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking4", "type:domain-logic"]
+    },
+    "booking5-domain": {
+      "projectType": "library",
+      "root": "libs/booking5/domain",
+      "sourceRoot": "libs/booking5/domain/src",
+      "prefix": "booking5",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking5/domain"],
+          "options": {
+            "project": "libs/booking5/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking5/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking5/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking5/domain"],
+          "options": {
+            "jestConfig": "libs/booking5/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking5/domain/src/**/*.ts",
+              "libs/booking5/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking5", "type:domain-logic"]
+    },
+    "booking6-domain": {
+      "projectType": "library",
+      "root": "libs/booking6/domain",
+      "sourceRoot": "libs/booking6/domain/src",
+      "prefix": "booking6",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking6/domain"],
+          "options": {
+            "project": "libs/booking6/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking6/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking6/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking6/domain"],
+          "options": {
+            "jestConfig": "libs/booking6/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking6/domain/src/**/*.ts",
+              "libs/booking6/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking6", "type:domain-logic"]
+    },
+    "booking7-domain": {
+      "projectType": "library",
+      "root": "libs/booking7/domain",
+      "sourceRoot": "libs/booking7/domain/src",
+      "prefix": "booking7",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking7/domain"],
+          "options": {
+            "project": "libs/booking7/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking7/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking7/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking7/domain"],
+          "options": {
+            "jestConfig": "libs/booking7/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking7/domain/src/**/*.ts",
+              "libs/booking7/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking7", "type:domain-logic"]
+    },
+    "booking8-domain": {
+      "projectType": "library",
+      "root": "libs/booking8/domain",
+      "sourceRoot": "libs/booking8/domain/src",
+      "prefix": "booking8",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking8/domain"],
+          "options": {
+            "project": "libs/booking8/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking8/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking8/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking8/domain"],
+          "options": {
+            "jestConfig": "libs/booking8/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking8/domain/src/**/*.ts",
+              "libs/booking8/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking8", "type:domain-logic"]
+    },
+    "booking9-domain": {
+      "projectType": "library",
+      "root": "libs/booking9/domain",
+      "sourceRoot": "libs/booking9/domain/src",
+      "prefix": "booking9",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking9/domain"],
+          "options": {
+            "project": "libs/booking9/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking9/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking9/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/booking9/domain"],
+          "options": {
+            "jestConfig": "libs/booking9/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking9/domain/src/**/*.ts",
+              "libs/booking9/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:booking9", "type:domain-logic"]
+    },
+    "d1-domain": {
+      "projectType": "library",
+      "root": "libs/d1/domain",
+      "sourceRoot": "libs/d1/domain/src",
+      "prefix": "d1",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/d1/domain"],
+          "options": {
+            "project": "libs/d1/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/d1/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/d1/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/d1/domain"],
+          "options": {
+            "jestConfig": "libs/d1/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/d1/domain/src/**/*.ts",
+              "libs/d1/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:d1", "type:domain-logic"]
+    },
+    "d2-domain": {
+      "projectType": "library",
+      "root": "libs/d2/domain",
+      "sourceRoot": "libs/d2/domain/src",
+      "prefix": "d2",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/d2/domain"],
+          "options": {
+            "project": "libs/d2/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/d2/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/d2/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/d2/domain"],
+          "options": {
+            "jestConfig": "libs/d2/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/d2/domain/src/**/*.ts",
+              "libs/d2/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:d2", "type:domain-logic"]
+    },
     "demo-app": {
       "projectType": "application",
       "root": "apps/demo-app",
@@ -8,7 +548,7 @@
       "prefix": "nx-ddd-workspace-generators",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@nrwl/angular:webpack-browser",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/demo-app",
@@ -21,7 +561,11 @@
               "apps/demo-app/src/assets"
             ],
             "styles": ["apps/demo-app/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/demo-app/webpack.config.js"
+            },
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -43,7 +587,10 @@
                   "with": "apps/demo-app/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/demo-app/webpack.prod.config.js"
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -57,7 +604,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@nrwl/angular:webpack-server",
           "configurations": {
             "production": {
               "browserTarget": "demo-app:build:production"
@@ -66,12 +613,17 @@
               "browserTarget": "demo-app:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 5000,
+            "publicHost": "http://localhost:5000"
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "demo-app:build"
+            "browserTarget": "demo-app:build",
+            "extraWebpackConfig": "apps/demo-app/webpack.config.js"
           }
         },
         "lint": {
@@ -121,6 +673,32 @@
       },
       "tags": [],
       "implicitDependencies": ["demo-app"]
+    },
+    "luggage-domain": {
+      "projectType": "library",
+      "root": "libs/luggage/domain",
+      "sourceRoot": "libs/luggage/domain/src",
+      "prefix": "luggage",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/luggage/domain"],
+          "options": {
+            "jestConfig": "libs/luggage/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/luggage/domain/src/**/*.ts",
+              "libs/luggage/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:luggage", "type:domain-logic"]
     }
   }
 }

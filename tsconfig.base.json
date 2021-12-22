@@ -8,13 +8,55 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-ddd-workspace-generators/booking/domain": [
+        "libs/booking/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking10/domain": [
+        "libs/booking10/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking11/domain": [
+        "libs/booking11/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking12/domain": [
+        "libs/booking12/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking13/domain": [
+        "libs/booking13/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking2/domain": [
+        "libs/booking2/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking4/domain": [
+        "libs/booking4/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking5/domain": [
+        "libs/booking5/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking6/domain": [
+        "libs/booking6/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking7/domain": [
+        "libs/booking7/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking8/domain": [
+        "libs/booking8/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/booking9/domain": [
+        "libs/booking9/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/d1/domain": ["libs/d1/domain/src/index.ts"],
+      "@nx-ddd-workspace-generators/d2/domain": ["libs/d2/domain/src/index.ts"],
+      "@nx-ddd-workspace-generators/luggage/domain": [
+        "libs/luggage/domain/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
