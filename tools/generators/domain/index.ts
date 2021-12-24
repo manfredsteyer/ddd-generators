@@ -10,7 +10,6 @@ import * as ts from 'typescript';
 import { NGRX_VERSION } from '../utils/ngrx-version';
 
 export default async function (tree: Tree, options: DomainOptions) {
-  console.log('options', options);
   
   const appName = strings.dasherize(options.name);
   const appNameAndDirectory = options.appDirectory

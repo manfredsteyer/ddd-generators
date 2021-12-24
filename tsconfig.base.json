@@ -15,46 +15,62 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-ddd-workspace-generators/boarding/domain": [
+        "libs/boarding/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/boarding/feature-callout": [
+        "libs/boarding/feature-callout/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/boarding/feature-manage": [
+        "libs/boarding/feature-manage/src/index.ts"
+      ],
       "@nx-ddd-workspace-generators/booking/domain": [
         "libs/booking/domain/src/index.ts"
-      ],
-      "@nx-ddd-workspace-generators/booking10/domain": [
-        "libs/booking10/domain/src/index.ts"
-      ],
-      "@nx-ddd-workspace-generators/booking11/domain": [
-        "libs/booking11/domain/src/index.ts"
-      ],
-      "@nx-ddd-workspace-generators/booking12/domain": [
-        "libs/booking12/domain/src/index.ts"
-      ],
-      "@nx-ddd-workspace-generators/booking13/domain": [
-        "libs/booking13/domain/src/index.ts"
       ],
       "@nx-ddd-workspace-generators/booking2/domain": [
         "libs/booking2/domain/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/booking4/domain": [
-        "libs/booking4/domain/src/index.ts"
+      "@nx-ddd-workspace-generators/booking2/feature-search": [
+        "libs/booking2/feature-search/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/booking5/domain": [
-        "libs/booking5/domain/src/index.ts"
+      "@nx-ddd-workspace-generators/booking2/feature-search2": [
+        "libs/booking2/feature-search2/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/booking6/domain": [
-        "libs/booking6/domain/src/index.ts"
+      "@nx-ddd-workspace-generators/booking2/feature-search3": [
+        "libs/booking2/feature-search3/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/booking7/domain": [
-        "libs/booking7/domain/src/index.ts"
+      "@nx-ddd-workspace-generators/checkin/domain": [
+        "libs/checkin/domain/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/booking8/domain": [
-        "libs/booking8/domain/src/index.ts"
+      "@nx-ddd-workspace-generators/checkin/feature-manage": [
+        "libs/checkin/feature-manage/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/booking9/domain": [
-        "libs/booking9/domain/src/index.ts"
+      "@nx-ddd-workspace-generators/checkin/feature-manage2": [
+        "libs/checkin/feature-manage2/src/index.ts"
       ],
-      "@nx-ddd-workspace-generators/d1/domain": ["libs/d1/domain/src/index.ts"],
-      "@nx-ddd-workspace-generators/d2/domain": ["libs/d2/domain/src/index.ts"],
+      "@nx-ddd-workspace-generators/checkin/feature-manage3": [
+        "libs/checkin/feature-manage3/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/checkin/feature-manage4": [
+        "libs/checkin/feature-manage4/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/checkin/feature-manage5": [
+        "libs/checkin/feature-manage5/src/index.ts"
+      ],
       "@nx-ddd-workspace-generators/luggage/domain": [
         "libs/luggage/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/luggage/feature-checkin": [
+        "libs/luggage/feature-checkin/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/security/domain": [
+        "libs/security/domain/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/security/feature-check": [
+        "libs/security/feature-check/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/security/feature-enter": [
+        "libs/security/feature-enter/src/index.ts"
       ]
     }
   },

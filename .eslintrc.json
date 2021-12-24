@@ -121,6 +121,30 @@
                   "domain:booking13",
                   "domain:shared"
                 ]
+              },
+              {
+                "sourceTag": "domain:luggage",
+                "onlyDependOnLibsWithTags": ["domain:luggage", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:checkin",
+                "onlyDependOnLibsWithTags": ["domain:checkin", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:booking",
+                "onlyDependOnLibsWithTags": ["domain:booking", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:booking2",
+                "onlyDependOnLibsWithTags": ["domain:booking2", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:boarding",
+                "onlyDependOnLibsWithTags": ["domain:boarding", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:security",
+                "onlyDependOnLibsWithTags": ["domain:security", "domain:shared"]
               }
             ]
           }

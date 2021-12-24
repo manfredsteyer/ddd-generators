@@ -1,12 +1,370 @@
 {
   "version": 1,
   "projects": {
+    "boarding": {
+      "projectType": "application",
+      "root": "apps/boarding",
+      "sourceRoot": "apps/boarding/src",
+      "prefix": "nx-ddd-workspace-generators",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/boarding",
+            "index": "apps/boarding/src/index.html",
+            "main": "apps/boarding/src/main.ts",
+            "polyfills": "apps/boarding/src/polyfills.ts",
+            "tsConfig": "apps/boarding/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/boarding/src/favicon.ico",
+              "apps/boarding/src/assets"
+            ],
+            "styles": ["apps/boarding/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/boarding/src/environments/environment.ts",
+                  "with": "apps/boarding/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "boarding:build:production"
+            },
+            "development": {
+              "browserTarget": "boarding:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "boarding:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/boarding/src/**/*.ts",
+              "apps/boarding/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/boarding"],
+          "options": {
+            "jestConfig": "apps/boarding/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["domain:boarding", "type:app"]
+    },
+    "boarding-domain": {
+      "projectType": "library",
+      "root": "libs/boarding/domain",
+      "sourceRoot": "libs/boarding/domain/src",
+      "prefix": "boarding",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/boarding/domain"],
+          "options": {
+            "project": "libs/boarding/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/boarding/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/boarding/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/boarding/domain"],
+          "options": {
+            "jestConfig": "libs/boarding/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/boarding/domain/src/**/*.ts",
+              "libs/boarding/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:boarding", "type:domain-logic"]
+    },
+    "boarding-e2e": {
+      "root": "apps/boarding-e2e",
+      "sourceRoot": "apps/boarding-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/boarding-e2e/cypress.json",
+            "devServerTarget": "boarding:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "boarding:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/boarding-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["boarding"]
+    },
+    "boarding-feature-callout": {
+      "projectType": "library",
+      "root": "libs/boarding/feature-callout",
+      "sourceRoot": "libs/boarding/feature-callout/src",
+      "prefix": "boarding",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/boarding/feature-callout"],
+          "options": {
+            "project": "libs/boarding/feature-callout/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/boarding/feature-callout/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/boarding/feature-callout/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/boarding/feature-callout"],
+          "options": {
+            "jestConfig": "libs/boarding/feature-callout/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/boarding/feature-callout/src/**/*.ts",
+              "libs/boarding/feature-callout/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:boarding", "type:feature"]
+    },
+    "boarding-feature-manage": {
+      "projectType": "library",
+      "root": "libs/boarding/feature-manage",
+      "sourceRoot": "libs/boarding/feature-manage/src",
+      "prefix": "boarding",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/boarding/feature-manage"],
+          "options": {
+            "project": "libs/boarding/feature-manage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/boarding/feature-manage/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/boarding/feature-manage/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/boarding/feature-manage"],
+          "options": {
+            "jestConfig": "libs/boarding/feature-manage/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/boarding/feature-manage/src/**/*.ts",
+              "libs/boarding/feature-manage/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:boarding", "type:feature"]
+    },
+    "booking": {
+      "projectType": "application",
+      "root": "apps/booking",
+      "sourceRoot": "apps/booking/src",
+      "prefix": "nx-ddd-workspace-generators",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/booking",
+            "index": "apps/booking/src/index.html",
+            "main": "apps/booking/src/main.ts",
+            "polyfills": "apps/booking/src/polyfills.ts",
+            "tsConfig": "apps/booking/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/booking/src/favicon.ico",
+              "apps/booking/src/assets"
+            ],
+            "styles": ["apps/booking/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/booking/src/environments/environment.ts",
+                  "with": "apps/booking/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "booking:build:production"
+            },
+            "development": {
+              "browserTarget": "booking:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "booking:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/booking/src/**/*.ts",
+              "apps/booking/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/booking"],
+          "options": {
+            "jestConfig": "apps/booking/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["domain:booking", "type:app"]
+    },
     "booking-domain": {
       "projectType": "library",
       "root": "libs/booking/domain",
       "sourceRoot": "libs/booking/domain/src",
       "prefix": "booking",
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking/domain"],
+          "options": {
+            "project": "libs/booking/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/booking/domain"],
@@ -27,173 +385,127 @@
       },
       "tags": ["domain:booking", "type:domain-logic"]
     },
-    "booking10-domain": {
-      "projectType": "library",
-      "root": "libs/booking10/domain",
-      "sourceRoot": "libs/booking10/domain/src",
-      "prefix": "booking10",
+    "booking-e2e": {
+      "root": "apps/booking-e2e",
+      "sourceRoot": "apps/booking-e2e/src",
+      "projectType": "application",
       "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking10/domain"],
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "project": "libs/booking10/domain/ng-package.json"
+            "cypressConfig": "apps/booking-e2e/cypress.json",
+            "devServerTarget": "booking:serve:development"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking10/domain/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/booking10/domain/tsconfig.lib.json"
+              "devServerTarget": "booking:serve:production"
             }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking10/domain"],
-          "options": {
-            "jestConfig": "libs/booking10/domain/jest.config.js",
-            "passWithNoTests": true
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "libs/booking10/domain/src/**/*.ts",
-              "libs/booking10/domain/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/booking-e2e/**/*.{js,ts}"]
           }
         }
       },
-      "tags": ["domain:booking10", "type:domain-logic"]
+      "tags": [],
+      "implicitDependencies": ["booking"]
     },
-    "booking11-domain": {
-      "projectType": "library",
-      "root": "libs/booking11/domain",
-      "sourceRoot": "libs/booking11/domain/src",
-      "prefix": "booking11",
+    "booking2": {
+      "projectType": "application",
+      "root": "apps/booking2",
+      "sourceRoot": "apps/booking2/src",
+      "prefix": "nx-ddd-workspace-generators",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking11/domain"],
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "project": "libs/booking11/domain/ng-package.json"
+            "outputPath": "dist/apps/booking2",
+            "index": "apps/booking2/src/index.html",
+            "main": "apps/booking2/src/main.ts",
+            "polyfills": "apps/booking2/src/polyfills.ts",
+            "tsConfig": "apps/booking2/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/booking2/src/favicon.ico",
+              "apps/booking2/src/assets"
+            ],
+            "styles": ["apps/booking2/src/styles.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking11/domain/tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/booking2/src/environments/environment.ts",
+                  "with": "apps/booking2/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
             },
             "development": {
-              "tsConfig": "libs/booking11/domain/tsconfig.lib.json"
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
         },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking11/domain"],
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "booking2:build:production"
+            },
+            "development": {
+              "browserTarget": "booking2:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "jestConfig": "libs/booking11/domain/jest.config.js",
-            "passWithNoTests": true
+            "browserTarget": "booking2:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/booking11/domain/src/**/*.ts",
-              "libs/booking11/domain/src/**/*.html"
+              "apps/booking2/src/**/*.ts",
+              "apps/booking2/src/**/*.html"
             ]
           }
-        }
-      },
-      "tags": ["domain:booking11", "type:domain-logic"]
-    },
-    "booking12-domain": {
-      "projectType": "library",
-      "root": "libs/booking12/domain",
-      "sourceRoot": "libs/booking12/domain/src",
-      "prefix": "booking12",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking12/domain"],
-          "options": {
-            "project": "libs/booking12/domain/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/booking12/domain/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/booking12/domain/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking12/domain"],
+          "outputs": ["coverage/apps/booking2"],
           "options": {
-            "jestConfig": "libs/booking12/domain/jest.config.js",
+            "jestConfig": "apps/booking2/jest.config.js",
             "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/booking12/domain/src/**/*.ts",
-              "libs/booking12/domain/src/**/*.html"
-            ]
           }
         }
       },
-      "tags": ["domain:booking12", "type:domain-logic"]
-    },
-    "booking13-domain": {
-      "projectType": "library",
-      "root": "libs/booking13/domain",
-      "sourceRoot": "libs/booking13/domain/src",
-      "prefix": "booking13",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking13/domain"],
-          "options": {
-            "project": "libs/booking13/domain/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/booking13/domain/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/booking13/domain/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking13/domain"],
-          "options": {
-            "jestConfig": "libs/booking13/domain/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/booking13/domain/src/**/*.ts",
-              "libs/booking13/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": ["domain:booking13", "type:domain-logic"]
+      "tags": ["domain:booking2", "type:app"]
     },
     "booking2-domain": {
       "projectType": "library",
@@ -201,6 +513,22 @@
       "sourceRoot": "libs/booking2/domain/src",
       "prefix": "booking2",
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/booking2/domain"],
+          "options": {
+            "project": "libs/booking2/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking2/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/booking2/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/booking2/domain"],
@@ -221,59 +549,61 @@
       },
       "tags": ["domain:booking2", "type:domain-logic"]
     },
-    "booking4-domain": {
-      "projectType": "library",
-      "root": "libs/booking4/domain",
-      "sourceRoot": "libs/booking4/domain/src",
-      "prefix": "booking4",
+    "booking2-e2e": {
+      "root": "apps/booking2-e2e",
+      "sourceRoot": "apps/booking2-e2e/src",
+      "projectType": "application",
       "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking4/domain"],
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "jestConfig": "libs/booking4/domain/jest.config.js",
-            "passWithNoTests": true
+            "cypressConfig": "apps/booking2-e2e/cypress.json",
+            "devServerTarget": "booking2:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "booking2:serve:production"
+            }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "libs/booking4/domain/src/**/*.ts",
-              "libs/booking4/domain/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/booking2-e2e/**/*.{js,ts}"]
           }
         }
       },
-      "tags": ["domain:booking4", "type:domain-logic"]
+      "tags": [],
+      "implicitDependencies": ["booking2"]
     },
-    "booking5-domain": {
+    "booking2-feature-search": {
       "projectType": "library",
-      "root": "libs/booking5/domain",
-      "sourceRoot": "libs/booking5/domain/src",
-      "prefix": "booking5",
+      "root": "libs/booking2/feature-search",
+      "sourceRoot": "libs/booking2/feature-search/src",
+      "prefix": "booking2",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking5/domain"],
+          "outputs": ["dist/libs/booking2/feature-search"],
           "options": {
-            "project": "libs/booking5/domain/ng-package.json"
+            "project": "libs/booking2/feature-search/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking5/domain/tsconfig.lib.prod.json"
+              "tsConfig": "libs/booking2/feature-search/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/booking5/domain/tsconfig.lib.json"
+              "tsConfig": "libs/booking2/feature-search/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking5/domain"],
+          "outputs": ["coverage/libs/booking2/feature-search"],
           "options": {
-            "jestConfig": "libs/booking5/domain/jest.config.js",
+            "jestConfig": "libs/booking2/feature-search/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -281,41 +611,41 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/booking5/domain/src/**/*.ts",
-              "libs/booking5/domain/src/**/*.html"
+              "libs/booking2/feature-search/src/**/*.ts",
+              "libs/booking2/feature-search/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:booking5", "type:domain-logic"]
+      "tags": ["domain:booking2", "type:feature"]
     },
-    "booking6-domain": {
+    "booking2-feature-search2": {
       "projectType": "library",
-      "root": "libs/booking6/domain",
-      "sourceRoot": "libs/booking6/domain/src",
-      "prefix": "booking6",
+      "root": "libs/booking2/feature-search2",
+      "sourceRoot": "libs/booking2/feature-search2/src",
+      "prefix": "booking2",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking6/domain"],
+          "outputs": ["dist/libs/booking2/feature-search2"],
           "options": {
-            "project": "libs/booking6/domain/ng-package.json"
+            "project": "libs/booking2/feature-search2/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking6/domain/tsconfig.lib.prod.json"
+              "tsConfig": "libs/booking2/feature-search2/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/booking6/domain/tsconfig.lib.json"
+              "tsConfig": "libs/booking2/feature-search2/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking6/domain"],
+          "outputs": ["coverage/libs/booking2/feature-search2"],
           "options": {
-            "jestConfig": "libs/booking6/domain/jest.config.js",
+            "jestConfig": "libs/booking2/feature-search2/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -323,41 +653,41 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/booking6/domain/src/**/*.ts",
-              "libs/booking6/domain/src/**/*.html"
+              "libs/booking2/feature-search2/src/**/*.ts",
+              "libs/booking2/feature-search2/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:booking6", "type:domain-logic"]
+      "tags": ["domain:booking2", "type:feature"]
     },
-    "booking7-domain": {
+    "booking2-feature-search3": {
       "projectType": "library",
-      "root": "libs/booking7/domain",
-      "sourceRoot": "libs/booking7/domain/src",
-      "prefix": "booking7",
+      "root": "libs/booking2/feature-search3",
+      "sourceRoot": "libs/booking2/feature-search3/src",
+      "prefix": "booking2",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking7/domain"],
+          "outputs": ["dist/libs/booking2/feature-search3"],
           "options": {
-            "project": "libs/booking7/domain/ng-package.json"
+            "project": "libs/booking2/feature-search3/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking7/domain/tsconfig.lib.prod.json"
+              "tsConfig": "libs/booking2/feature-search3/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/booking7/domain/tsconfig.lib.json"
+              "tsConfig": "libs/booking2/feature-search3/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking7/domain"],
+          "outputs": ["coverage/libs/booking2/feature-search3"],
           "options": {
-            "jestConfig": "libs/booking7/domain/jest.config.js",
+            "jestConfig": "libs/booking2/feature-search3/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -365,41 +695,135 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/booking7/domain/src/**/*.ts",
-              "libs/booking7/domain/src/**/*.html"
+              "libs/booking2/feature-search3/src/**/*.ts",
+              "libs/booking2/feature-search3/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:booking7", "type:domain-logic"]
+      "tags": ["domain:booking2", "type:feature"]
     },
-    "booking8-domain": {
-      "projectType": "library",
-      "root": "libs/booking8/domain",
-      "sourceRoot": "libs/booking8/domain/src",
-      "prefix": "booking8",
+    "checkin": {
+      "projectType": "application",
+      "root": "apps/checkin",
+      "sourceRoot": "apps/checkin/src",
+      "prefix": "nx-ddd-workspace-generators",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking8/domain"],
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "project": "libs/booking8/domain/ng-package.json"
+            "outputPath": "dist/apps/checkin",
+            "index": "apps/checkin/src/index.html",
+            "main": "apps/checkin/src/main.ts",
+            "polyfills": "apps/checkin/src/polyfills.ts",
+            "tsConfig": "apps/checkin/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/checkin/src/favicon.ico",
+              "apps/checkin/src/assets"
+            ],
+            "styles": ["apps/checkin/src/styles.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking8/domain/tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/checkin/src/environments/environment.ts",
+                  "with": "apps/checkin/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
             },
             "development": {
-              "tsConfig": "libs/booking8/domain/tsconfig.lib.json"
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "checkin:build:production"
+            },
+            "development": {
+              "browserTarget": "checkin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "checkin:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/checkin/src/**/*.ts",
+              "apps/checkin/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/checkin"],
+          "options": {
+            "jestConfig": "apps/checkin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["domain:checkin", "type:app"]
+    },
+    "checkin-domain": {
+      "projectType": "library",
+      "root": "libs/checkin/domain",
+      "sourceRoot": "libs/checkin/domain/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/checkin/domain"],
+          "options": {
+            "project": "libs/checkin/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/checkin/domain/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking8/domain"],
+          "outputs": ["coverage/libs/checkin/domain"],
           "options": {
-            "jestConfig": "libs/booking8/domain/jest.config.js",
+            "jestConfig": "libs/checkin/domain/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -407,41 +831,69 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/booking8/domain/src/**/*.ts",
-              "libs/booking8/domain/src/**/*.html"
+              "libs/checkin/domain/src/**/*.ts",
+              "libs/checkin/domain/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:booking8", "type:domain-logic"]
+      "tags": ["domain:checkin", "type:domain-logic"]
     },
-    "booking9-domain": {
-      "projectType": "library",
-      "root": "libs/booking9/domain",
-      "sourceRoot": "libs/booking9/domain/src",
-      "prefix": "booking9",
+    "checkin-e2e": {
+      "root": "apps/checkin-e2e",
+      "sourceRoot": "apps/checkin-e2e/src",
+      "projectType": "application",
       "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/booking9/domain"],
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "project": "libs/booking9/domain/ng-package.json"
+            "cypressConfig": "apps/checkin-e2e/cypress.json",
+            "devServerTarget": "checkin:serve:development"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/booking9/domain/tsconfig.lib.prod.json"
+              "devServerTarget": "checkin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/checkin-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["checkin"]
+    },
+    "checkin-feature-manage": {
+      "projectType": "library",
+      "root": "libs/checkin/feature-manage",
+      "sourceRoot": "libs/checkin/feature-manage/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/checkin/feature-manage"],
+          "options": {
+            "project": "libs/checkin/feature-manage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/feature-manage/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/booking9/domain/tsconfig.lib.json"
+              "tsConfig": "libs/checkin/feature-manage/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/booking9/domain"],
+          "outputs": ["coverage/libs/checkin/feature-manage"],
           "options": {
-            "jestConfig": "libs/booking9/domain/jest.config.js",
+            "jestConfig": "libs/checkin/feature-manage/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -449,41 +901,41 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/booking9/domain/src/**/*.ts",
-              "libs/booking9/domain/src/**/*.html"
+              "libs/checkin/feature-manage/src/**/*.ts",
+              "libs/checkin/feature-manage/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:booking9", "type:domain-logic"]
+      "tags": ["domain:checkin", "type:feature"]
     },
-    "d1-domain": {
+    "checkin-feature-manage2": {
       "projectType": "library",
-      "root": "libs/d1/domain",
-      "sourceRoot": "libs/d1/domain/src",
-      "prefix": "d1",
+      "root": "libs/checkin/feature-manage2",
+      "sourceRoot": "libs/checkin/feature-manage2/src",
+      "prefix": "checkin",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/d1/domain"],
+          "outputs": ["dist/libs/checkin/feature-manage2"],
           "options": {
-            "project": "libs/d1/domain/ng-package.json"
+            "project": "libs/checkin/feature-manage2/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/d1/domain/tsconfig.lib.prod.json"
+              "tsConfig": "libs/checkin/feature-manage2/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/d1/domain/tsconfig.lib.json"
+              "tsConfig": "libs/checkin/feature-manage2/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/d1/domain"],
+          "outputs": ["coverage/libs/checkin/feature-manage2"],
           "options": {
-            "jestConfig": "libs/d1/domain/jest.config.js",
+            "jestConfig": "libs/checkin/feature-manage2/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -491,41 +943,41 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/d1/domain/src/**/*.ts",
-              "libs/d1/domain/src/**/*.html"
+              "libs/checkin/feature-manage2/src/**/*.ts",
+              "libs/checkin/feature-manage2/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:d1", "type:domain-logic"]
+      "tags": ["domain:checkin", "type:feature"]
     },
-    "d2-domain": {
+    "checkin-feature-manage3": {
       "projectType": "library",
-      "root": "libs/d2/domain",
-      "sourceRoot": "libs/d2/domain/src",
-      "prefix": "d2",
+      "root": "libs/checkin/feature-manage3",
+      "sourceRoot": "libs/checkin/feature-manage3/src",
+      "prefix": "checkin",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/d2/domain"],
+          "outputs": ["dist/libs/checkin/feature-manage3"],
           "options": {
-            "project": "libs/d2/domain/ng-package.json"
+            "project": "libs/checkin/feature-manage3/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/d2/domain/tsconfig.lib.prod.json"
+              "tsConfig": "libs/checkin/feature-manage3/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/d2/domain/tsconfig.lib.json"
+              "tsConfig": "libs/checkin/feature-manage3/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/d2/domain"],
+          "outputs": ["coverage/libs/checkin/feature-manage3"],
           "options": {
-            "jestConfig": "libs/d2/domain/jest.config.js",
+            "jestConfig": "libs/checkin/feature-manage3/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -533,13 +985,97 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/d2/domain/src/**/*.ts",
-              "libs/d2/domain/src/**/*.html"
+              "libs/checkin/feature-manage3/src/**/*.ts",
+              "libs/checkin/feature-manage3/src/**/*.html"
             ]
           }
         }
       },
-      "tags": ["domain:d2", "type:domain-logic"]
+      "tags": ["domain:checkin", "type:feature"]
+    },
+    "checkin-feature-manage4": {
+      "projectType": "library",
+      "root": "libs/checkin/feature-manage4",
+      "sourceRoot": "libs/checkin/feature-manage4/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/checkin/feature-manage4"],
+          "options": {
+            "project": "libs/checkin/feature-manage4/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/feature-manage4/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/checkin/feature-manage4/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/checkin/feature-manage4"],
+          "options": {
+            "jestConfig": "libs/checkin/feature-manage4/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/checkin/feature-manage4/src/**/*.ts",
+              "libs/checkin/feature-manage4/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:checkin", "type:feature"]
+    },
+    "checkin-feature-manage5": {
+      "projectType": "library",
+      "root": "libs/checkin/feature-manage5",
+      "sourceRoot": "libs/checkin/feature-manage5/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/checkin/feature-manage5"],
+          "options": {
+            "project": "libs/checkin/feature-manage5/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/feature-manage5/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/checkin/feature-manage5/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/checkin/feature-manage5"],
+          "options": {
+            "jestConfig": "libs/checkin/feature-manage5/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/checkin/feature-manage5/src/**/*.ts",
+              "libs/checkin/feature-manage5/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:checkin", "type:feature"]
     },
     "demo-app": {
       "projectType": "application",
@@ -674,12 +1210,122 @@
       "tags": [],
       "implicitDependencies": ["demo-app"]
     },
+    "luggage": {
+      "projectType": "application",
+      "root": "apps/luggage",
+      "sourceRoot": "apps/luggage/src",
+      "prefix": "nx-ddd-workspace-generators",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/luggage",
+            "index": "apps/luggage/src/index.html",
+            "main": "apps/luggage/src/main.ts",
+            "polyfills": "apps/luggage/src/polyfills.ts",
+            "tsConfig": "apps/luggage/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/luggage/src/favicon.ico",
+              "apps/luggage/src/assets"
+            ],
+            "styles": ["apps/luggage/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/luggage/src/environments/environment.ts",
+                  "with": "apps/luggage/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "luggage:build:production"
+            },
+            "development": {
+              "browserTarget": "luggage:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "luggage:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/luggage/src/**/*.ts",
+              "apps/luggage/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/luggage"],
+          "options": {
+            "jestConfig": "apps/luggage/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["domain:luggage", "type:app"]
+    },
     "luggage-domain": {
       "projectType": "library",
       "root": "libs/luggage/domain",
       "sourceRoot": "libs/luggage/domain/src",
       "prefix": "luggage",
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/luggage/domain"],
+          "options": {
+            "project": "libs/luggage/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/luggage/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/luggage/domain"],
@@ -699,6 +1345,324 @@
         }
       },
       "tags": ["domain:luggage", "type:domain-logic"]
+    },
+    "luggage-e2e": {
+      "root": "apps/luggage-e2e",
+      "sourceRoot": "apps/luggage-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/luggage-e2e/cypress.json",
+            "devServerTarget": "luggage:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "luggage:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/luggage-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["luggage"]
+    },
+    "luggage-feature-checkin": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-checkin",
+      "sourceRoot": "libs/luggage/feature-checkin/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/luggage/feature-checkin"],
+          "options": {
+            "project": "libs/luggage/feature-checkin/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-checkin/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/luggage/feature-checkin/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/luggage/feature-checkin"],
+          "options": {
+            "jestConfig": "libs/luggage/feature-checkin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/luggage/feature-checkin/src/**/*.ts",
+              "libs/luggage/feature-checkin/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:luggage", "type:feature"]
+    },
+    "security": {
+      "projectType": "application",
+      "root": "apps/security",
+      "sourceRoot": "apps/security/src",
+      "prefix": "nx-ddd-workspace-generators",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/security",
+            "index": "apps/security/src/index.html",
+            "main": "apps/security/src/main.ts",
+            "polyfills": "apps/security/src/polyfills.ts",
+            "tsConfig": "apps/security/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/security/src/favicon.ico",
+              "apps/security/src/assets"
+            ],
+            "styles": ["apps/security/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/security/src/environments/environment.ts",
+                  "with": "apps/security/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "security:build:production"
+            },
+            "development": {
+              "browserTarget": "security:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "security:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/security/src/**/*.ts",
+              "apps/security/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/security"],
+          "options": {
+            "jestConfig": "apps/security/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["domain:security", "type:app"]
+    },
+    "security-domain": {
+      "projectType": "library",
+      "root": "libs/security/domain",
+      "sourceRoot": "libs/security/domain/src",
+      "prefix": "security",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/security/domain"],
+          "options": {
+            "project": "libs/security/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/security/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/security/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/security/domain"],
+          "options": {
+            "jestConfig": "libs/security/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/security/domain/src/**/*.ts",
+              "libs/security/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:security", "type:domain-logic"]
+    },
+    "security-e2e": {
+      "root": "apps/security-e2e",
+      "sourceRoot": "apps/security-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/security-e2e/cypress.json",
+            "devServerTarget": "security:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "security:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/security-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["security"]
+    },
+    "security-feature-check": {
+      "projectType": "library",
+      "root": "libs/security/feature-check",
+      "sourceRoot": "libs/security/feature-check/src",
+      "prefix": "security",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/security/feature-check"],
+          "options": {
+            "project": "libs/security/feature-check/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/security/feature-check/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/security/feature-check/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/security/feature-check"],
+          "options": {
+            "jestConfig": "libs/security/feature-check/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/security/feature-check/src/**/*.ts",
+              "libs/security/feature-check/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:security", "type:feature"]
+    },
+    "security-feature-enter": {
+      "projectType": "library",
+      "root": "libs/security/feature-enter",
+      "sourceRoot": "libs/security/feature-enter/src",
+      "prefix": "security",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/security/feature-enter"],
+          "options": {
+            "project": "libs/security/feature-enter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/security/feature-enter/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/security/feature-enter/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/security/feature-enter"],
+          "options": {
+            "jestConfig": "libs/security/feature-enter/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/security/feature-enter/src/**/*.ts",
+              "libs/security/feature-enter/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:security", "type:feature"]
     }
   }
 }
