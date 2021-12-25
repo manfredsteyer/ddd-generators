@@ -1,10 +1,19 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "ignorePatterns": [
+    "**/*"
+  ],
+  "plugins": [
+    "@nrwl/nx"
+  ],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -40,59 +49,99 @@
               },
               {
                 "sourceTag": "type:ui",
-                "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
+                "onlyDependOnLibsWithTags": [
+                  "type:domain-logic",
+                  "type:util"
+                ]
               },
               {
                 "sourceTag": "type:domain-logic",
-                "onlyDependOnLibsWithTags": ["type:util"]
+                "onlyDependOnLibsWithTags": [
+                  "type:util"
+                ]
               },
               {
                 "sourceTag": "domain:shared",
-                "onlyDependOnLibsWithTags": ["domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:d1",
-                "onlyDependOnLibsWithTags": ["domain:d1", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:d1",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:d2",
-                "onlyDependOnLibsWithTags": ["domain:d2", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:d2",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:luggage",
-                "onlyDependOnLibsWithTags": ["domain:luggage", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:luggage",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking",
-                "onlyDependOnLibsWithTags": ["domain:booking", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking2",
-                "onlyDependOnLibsWithTags": ["domain:booking2", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking2",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking4",
-                "onlyDependOnLibsWithTags": ["domain:booking4", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking4",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking5",
-                "onlyDependOnLibsWithTags": ["domain:booking5", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking5",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking6",
-                "onlyDependOnLibsWithTags": ["domain:booking6", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking6",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking7",
-                "onlyDependOnLibsWithTags": ["domain:booking7", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking7",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking8",
-                "onlyDependOnLibsWithTags": ["domain:booking8", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking8",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking9",
-                "onlyDependOnLibsWithTags": ["domain:booking9", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking9",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking10",
@@ -124,27 +173,90 @@
               },
               {
                 "sourceTag": "domain:luggage",
-                "onlyDependOnLibsWithTags": ["domain:luggage", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:luggage",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:checkin",
-                "onlyDependOnLibsWithTags": ["domain:checkin", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:checkin",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking",
-                "onlyDependOnLibsWithTags": ["domain:booking", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:booking2",
-                "onlyDependOnLibsWithTags": ["domain:booking2", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:booking2",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:boarding",
-                "onlyDependOnLibsWithTags": ["domain:boarding", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:boarding",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "domain:security",
-                "onlyDependOnLibsWithTags": ["domain:security", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:security",
+                  "domain:shared"
+                ]
+              },
+              {
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": [
+                  "type:api",
+                  "type:feature",
+                  "type:ui",
+                  "type:domain-logic",
+                  "type:util"
+                ]
+              },
+              {
+                "sourceTag": "type:api",
+                "onlyDependOnLibsWithTags": [
+                  "type:ui",
+                  "type:domain-logic",
+                  "type:util"
+                ]
+              },
+              {
+                "sourceTag": "type:feature",
+                "onlyDependOnLibsWithTags": [
+                  "type:ui",
+                  "type:domain-logic",
+                  "type:util"
+                ]
+              },
+              {
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": [
+                  "type:domain-logic",
+                  "type:util"
+                ]
+              },
+              {
+                "sourceTag": "type:domain-logic",
+                "onlyDependOnLibsWithTags": [
+                  "type:util"
+                ]
+              },
+              {
+                "sourceTag": "domain:shared",
+                "onlyDependOnLibsWithTags": [
+                  "domain:shared"
+                ]
               }
             ]
           }
@@ -152,13 +264,23 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/typescript"
+      ],
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/javascript"
+      ],
       "rules": {}
     }
   ]

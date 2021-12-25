@@ -4,14 +4,5 @@
   "$id": "init",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "description": "Library name",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
-    }
-  },
-  "required": ["name"]
+  }
 }

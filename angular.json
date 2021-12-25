@@ -1663,6 +1663,90 @@
         }
       },
       "tags": ["domain:security", "type:feature"]
+    },
+    "shared-ui-ui-designsystem": {
+      "projectType": "library",
+      "root": "libs/shared/ui-ui-designsystem",
+      "sourceRoot": "libs/shared/ui-ui-designsystem/src",
+      "prefix": "ui-designsystem",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/ui-ui-designsystem"],
+          "options": {
+            "project": "libs/shared/ui-ui-designsystem/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/ui-ui-designsystem/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/ui-ui-designsystem/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui-ui-designsystem"],
+          "options": {
+            "jestConfig": "libs/shared/ui-ui-designsystem/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui-ui-designsystem/src/**/*.ts",
+              "libs/shared/ui-ui-designsystem/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:shared", "type:ui"]
+    },
+    "test-util-util-auth": {
+      "projectType": "library",
+      "root": "libs/test/util-util-auth",
+      "sourceRoot": "libs/test/util-util-auth/src",
+      "prefix": "util-auth",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/test/util-util-auth"],
+          "options": {
+            "project": "libs/test/util-util-auth/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/test/util-util-auth/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/test/util-util-auth/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/test/util-util-auth"],
+          "options": {
+            "jestConfig": "libs/test/util-util-auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/test/util-util-auth/src/**/*.ts",
+              "libs/test/util-util-auth/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:test", "type:util"]
     }
   }
 }

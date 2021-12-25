@@ -34,8 +34,6 @@ export default async function (tree: Tree, options: DomainOptions) {
   const libFolderPath = `libs/${libNameAndDirectory}`;
   const libLibFolder = `${libFolderPath}/domain/src/lib`;
 
-
-
   if (options.ngrx && !options.addApp) {
     throw new Error(
       `The 'ngrx' option may only be used when the 'addApp' option is used.`

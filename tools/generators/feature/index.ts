@@ -1,4 +1,4 @@
-import { Tree, formatFiles, installPackagesTask, readWorkspaceConfiguration, generateFiles, joinPathFragments } from '@nrwl/devkit';
+import { Tree, formatFiles, installPackagesTask, generateFiles, joinPathFragments } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/angular/generators';
 import { FeatureOptions } from './schema';
 import { strings } from '@angular-devkit/core';
@@ -6,19 +6,15 @@ import { addTsExport } from '../rules/add-ts-exports';
 import { addDeclarationWithExportToNgModule, addImportToNgModule } from '../utils/addToNgModule';
 import { addNgrxImportsToDomain } from '../rules/add-ngrx-imports-to-domain';
 import { fileContains } from '../utils/fileContains';
+import { getWorkspaceScope } from '../utils/get-workspace-scope';
 
 export default async function (tree: Tree, options: FeatureOptions) {
 
-  if (!options.app) {
-    options.app = options.domain;
-  }
-
+  options.app ??= options.domain;
   options.domainDirectory ??= '';
   options.entity ??= '';
 
-
-  const wsConfig = readWorkspaceConfiguration(tree);
-  const workspaceName = `@${wsConfig.npmScope}`;
+  const workspaceName = getWorkspaceScope(tree);
   const featureName = strings.dasherize(options.name)
     ? strings.dasherize(options.name)
     : '';

@@ -71,6 +71,12 @@
       ],
       "@nx-ddd-workspace-generators/security/feature-enter": [
         "libs/security/feature-enter/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/shared/ui-ui-designsystem": [
+        "libs/shared/ui-ui-designsystem/src/index.ts"
+      ],
+      "@nx-ddd-workspace-generators/test/util-util-auth": [
+        "libs/test/util-util-auth/src/index.ts"
       ]
     }
   },
